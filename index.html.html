@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manno ❤️</title>
+
+<style>
+body {
+  text-align: center;
+  font-family: Arial;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#yes {
+  background: green;
+  color: white;
+}
+
+#no {
+  background: red;
+  color: white;
+  position: absolute;
+}
+
+.heart {
+  position: fixed;
+  color: red;
+  font-size: 20px;
+  animation: float 3s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Manno... Can we break our 6 hours call record? Pleaseeeee? ❤️</h1>
+
+<button id="yes" onclick="yesClick()">Yes 💖</button>
+<button id="no" onclick="noClick()">No 💔</button>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+let messages = [
+  "Manno please soch lo 😢",
+  "Are you sure? 😭",
+  "Ek aur chance 😔",
+  "Pakka? 😩",
+  "Last try 😢"
+];
+
+let i = 0;
+
+function noClick() {
+  alert(messages[i]);
+  i = (i + 1) % messages.length;
+
+  let btn = document.getElementById("no");
+  btn.style.top = Math.random() * window.innerHeight + "px";
+  btn.style.left = Math.random() * window.innerWidth + "px";
+}
+
+function yesClick() {
+  document.body.innerHTML = `
+    <h1>🎉 Congratulations Manno!!! 🎉</h1>
+    <h2>You are mine now ❤️</h2>
+  `;
+  
+  document.getElementById("music").play();
+
+  setInterval(createHeart, 200);
+}
+
+function createHeart() {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 3000);
+}
+</script>
+
+</body>
+</html>
